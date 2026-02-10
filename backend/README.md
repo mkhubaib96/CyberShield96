@@ -1,6 +1,6 @@
-# KidGuard Authentication Backend
+# CyberShield Authentication Backend
 
-A secure Node.js/Express authentication server for the KidGuard application.
+A secure Node.js/Express authentication server for the CyberShield application.
 
 ## Prerequisites
 
