@@ -1,6 +1,6 @@
-# Guardian Guard
+# CyberShield
 
-Guardian Guard is a comprehensive child safety application designed to protect children in the digital age. It features a secure backend, real-time monitoring, and a user-friendly interface.
+CyberShield is a comprehensive child safety application designed to protect children in the digital age. It features a secure backend, real-time monitoring, and a user-friendly interface.
 
 ## Features
 
