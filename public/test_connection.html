@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Backend Connection Test</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+        .log { background: #f0f0f0; padding: 10px; border-radius: 5px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>Backend Connection Test</h1>
+    <p>Testing connection to: <strong>http://localhost:3000</strong></p>
+    <button onclick="testConnection()">Retry Test</button>
+    <div id="result"></div>
+    <h3>Logs:</h3>
+    <div id="logs" class="log"></div>
+
+    <script>
+        function log(msg) {
+            const div = document.getElementById('logs');
+            div.innerHTML += `<div>${new Date().toLocaleTimeString()} - ${msg}</div>`;
+        }
+
+        async function testConnection() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+            log('Starting connection test...');
+
+            try {
+                // Try direct connection first
+                log('Attempting fetch to http://localhost:3000/');
+                const res = await fetch('http://localhost:3000/', { mode: 'cors' });
+                const data = await res.json();
+                
+                log(`Response received: ${JSON.stringify(data)}`);
+                resultDiv.innerHTML = '<h2 class="success">✅ Connection Successful!</h2><p>Your backend is running and accessible.</p>';
+            } catch (err) {
+                console.error(err);
+                log(`Error: ${err.message}`);
+                resultDiv.innerHTML = '<h2 class="error">❌ Connection Failed</h2><p>Could not connect to localhost:3000. Is the backend server running?</p>';
+                
+                // Suggestions
+                log('Suggestion: Open terminal, go to "backend" folder, run "npm start"');
+            }
+        }
+
+        testConnection();
+    </script>
+</body>
+</html>
